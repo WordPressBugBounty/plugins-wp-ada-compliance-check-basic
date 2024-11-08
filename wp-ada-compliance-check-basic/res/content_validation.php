@@ -62,151 +62,249 @@ function wp_ada_compliance_basic_complete_content_validations( $content, $postin
 	}
 
 	// check for redundant alt text on images.
-	wp_ada_compliance_basic_validate_redundant_alt_text( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_redundant_alt_text' ) ) {
+		wp_ada_compliance_basic_validate_redundant_alt_text( $content, $postinfo );
+	}
 
 	// check for redundant title attributes on links.
-	wp_ada_compliance_basic_validate_redundant_title_tag( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_redundant_title_tag' ) ) {
+		wp_ada_compliance_basic_validate_redundant_title_tag( $content, $postinfo );
+	}
 
 	// check for absolute font sizes.
-	wp_ada_compliance_basic_validate_absolute_fontsize( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_absolute_fontsize' ) ) {
+		wp_ada_compliance_basic_validate_absolute_fontsize( $content, $postinfo );
+	}
 
 	// check for ambiguous ancor text.
-	wp_ada_compliance_basic_validate_ambiguous_anchor_tag( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_ambiguous_anchor_tag' ) ) {
+		wp_ada_compliance_basic_validate_ambiguous_anchor_tag( $content, $postinfo );
+	}
 
 	// check for audio or video tags with autoplay.
-	wp_ada_compliance_basic_validate_av_tag_with_autoplay( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_av_tag_with_autoplay' ) ) {
+		wp_ada_compliance_basic_validate_av_tag_with_autoplay( $content, $postinfo );
+	}
 
 	// check for audio, video or iframe video missing tracks.
-	wp_ada_compliance_basic_validate_av_tags_missing_track( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_av_tags_missing_track' ) ) {
+		wp_ada_compliance_basic_validate_av_tags_missing_track( $content, $postinfo );
+	}
 
 	// check for empty anchor tag.
-	wp_ada_compliance_basic_validate_empty_anchor_tag( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_empty_anchor_tag' ) ) {
+		wp_ada_compliance_basic_validate_empty_anchor_tag( $content, $postinfo );
+	}
 
 	// check for empty heading tag.
-	wp_ada_compliance_basic_validate_empty_heading_tag( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_empty_heading_tag' ) ) {
+		wp_ada_compliance_basic_validate_empty_heading_tag( $content, $postinfo );
+	}
 
 	// validate title tag in iframe.
-	wp_ada_compliance_basic_validate_iframe_missing_title( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_iframe_missing_title' ) ) {
+		wp_ada_compliance_basic_validate_iframe_missing_title( $content, $postinfo );
+	}
 
 	// validate alt text content.
-	wp_ada_compliance_basic_validate_img_alt_invalid( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_img_alt_invalid' ) ) {
+		wp_ada_compliance_basic_validate_img_alt_invalid( $content, $postinfo );
+	}
 
 	// image missing alt text.
-	wp_ada_compliance_basic_validate_img_missing_alt( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_img_missing_alt' ) ) {
+		wp_ada_compliance_basic_validate_img_missing_alt( $content, $postinfo );
+	}
 
 	// image empty alt text.
-	wp_ada_compliance_basic_validate_img_empty_alt( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_img_empty_alt' ) ) {
+		wp_ada_compliance_basic_validate_img_empty_alt( $content, $postinfo );
+	}
 
 	// target new window.
-	wp_ada_compliance_basic_validate_new_window_tag( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_new_window_tag' ) ) {
+		wp_ada_compliance_basic_validate_new_window_tag( $content, $postinfo );
+	}
 
 	// validate redundent link text.
-	wp_ada_compliance_basic_validate_redundant_anchor_text( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_redundant_anchor_text' ) ) {
+		wp_ada_compliance_basic_validate_redundant_anchor_text( $content, $postinfo );
+	}
 
 	// validate tables missing th.
-	wp_ada_compliance_basic_validate_missing_th( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_missing_th' ) ) {
+		wp_ada_compliance_basic_validate_missing_th( $content, $postinfo );
+	}
 
 	// validate form fields for labels.
-	wp_ada_compliance_basic_validate_missing_form_label( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_missing_form_label' ) ) {
+		wp_ada_compliance_basic_validate_missing_form_label( $content, $postinfo );
+	}
 
 	// image map hot spot missing alt text.
-	wp_ada_compliance_basic_validate_imagemap_missing_alt_text( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_imagemap_missing_alt_text' ) ) {
+		wp_ada_compliance_basic_validate_imagemap_missing_alt_text( $content, $postinfo );
+	}
 
 	// validate forms that submit automatically or trigger an unexpected context change.
-	wp_ada_compliance_basic_validate_context_change_form( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_context_change_form' ) ) {
+		wp_ada_compliance_basic_validate_context_change_form( $content, $postinfo );
+	}
 
 	// validate elments with onclick but not onkeypress.
-	wp_ada_compliance_basic_validate_missing_onkeypress( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_missing_onkeypress' ) ) {
+		wp_ada_compliance_basic_validate_missing_onkeypress( $content, $postinfo );
+	}
 
 	// look for links without a visual cue.
-	wp_ada_compliance_basic_validate_link_without_visual_cue( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_missing_headings' ) ) {
+		wp_ada_compliance_basic_validate_link_without_visual_cue( $content, $postinfo );
+	}
 
 	// validate page structure, look for missing headings.
-	wp_ada_compliance_basic_validate_missing_headings( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_missing_headings' ) ) {
+		wp_ada_compliance_basic_validate_missing_headings( $content, $postinfo );
+	}
 
 	// check for anchor tags linking images to them self.
-	wp_ada_compliance_basic_validate_img_linked_to_self( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_img_linked_to_self' ) ) {
+		wp_ada_compliance_basic_validate_img_linked_to_self( $content, $postinfo );
+	}
 
 	// validate animated images.
-	wp_ada_compliance_basic_validate_animated_image( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_animated_image' ) ) {
+		wp_ada_compliance_basic_validate_animated_image( $content, $postinfo );
+	}
 
 	// look for foreground and background colors without enough contrast.
-	wp_ada_compliance_basic_validate_color_contrast_failure( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_color_contrast_failure' ) ) {
+		wp_ada_compliance_basic_validate_color_contrast_failure( $content, $postinfo );
+	}
 
 	// check missing page titles.
-	wp_ada_compliance_basic_validate_missing_title( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_missing_title' ) ) {
+		wp_ada_compliance_basic_validate_missing_title( $content, $postinfo );
+	}
 
 	// image empty alt text with title or non empty aria label attribute.
-	wp_ada_compliance_basic_validate_img_empty_alt_with_title( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_img_empty_alt_with_title' ) ) {
+		wp_ada_compliance_basic_validate_img_empty_alt_with_title( $content, $postinfo );
+	}
 
 	// validate blinking text.
-	wp_ada_compliance_basic_validate_blinking_text( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_blinking_text' ) ) {
+		wp_ada_compliance_basic_validate_blinking_text( $content, $postinfo );
+	}
 
 	// look for links and focus styles where visual focus indication has been removed.
-	wp_ada_compliance_basic_validate_visual_focus_removed( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_visual_focus_removed' ) ) {
+		wp_ada_compliance_basic_validate_visual_focus_removed( $content, $postinfo );
+	}
 
 	// look for tags with onclick used to emulate links.
-	wp_ada_compliance_basic_validate_emulating_links( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_emulating_links' ) ) {
+		wp_ada_compliance_basic_validate_emulating_links( $content, $postinfo );
+	}
 
 	// validate meta refresh attributes that reload the page or redirect to a new location after a timeout.
-	wp_ada_compliance_basic_validate_meta_refresh_use( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_meta_refresh_use' ) ) {
+		wp_ada_compliance_basic_validate_meta_refresh_use( $content, $postinfo );
+	}
 
 	// validate page structure, look for headings that are not in order.
-	wp_ada_compliance_basic_validate_incorrect_heading_order( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_incorrect_heading_order' ) ) {
+		wp_ada_compliance_basic_validate_incorrect_heading_order( $content, $postinfo );
+	}
 
 	// check for tab order changed using tabindex.
-	wp_ada_compliance_basic_validate_tab_order_modified( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_tab_order_modified' ) ) {
+		wp_ada_compliance_basic_validate_tab_order_modified( $content, $postinfo );
+	}
 
 	// validate justified text.
-	wp_ada_compliance_basic_validate_text_justified( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_text_justified' ) ) {
+		wp_ada_compliance_basic_validate_text_justified( $content, $postinfo );
+	}
 
 	// validate links without href but that include event handlers.
-	wp_ada_compliance_basic_validate_missing_href( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_missing_href' ) ) {
+		wp_ada_compliance_basic_validate_missing_href( $content, $postinfo );
+	}
 
 	// check for empty button tag.
-	wp_ada_compliance_basic_validate_empty_button_tag( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_empty_button_tag' ) ) {
+		wp_ada_compliance_basic_validate_empty_button_tag( $content, $postinfo );
+	}
 
 	// check for empty anchor tag.
-	wp_ada_compliance_basic_validate_empty_href( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_empty_href' ) ) {
+		wp_ada_compliance_basic_validate_empty_href( $content, $postinfo );
+	}
 
 	// links in content that are lot included in an anchor tag.
-	wp_ada_compliance_basic_validate_unlinked_anchors( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_unlinked_anchors' ) ) {
+		wp_ada_compliance_basic_validate_unlinked_anchors( $content, $postinfo );
+	}
 
 	// look for elementor toc widgets.
-	wp_ada_compliance_basic_validate_elementor_toc( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_elementor_toc' ) ) {
+		wp_ada_compliance_basic_validate_elementor_toc( $content, $postinfo );
+	}
 
 	// look for elementor toggle or accordion.
-	wp_ada_compliance_basic_validate_elementor_toggles( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_elementor_toggles' ) ) {
+		wp_ada_compliance_basic_validate_elementor_toggles( $content, $postinfo );
+	}
 
 	// validate adjacent identical links.
-	wp_ada_compliance_basic_validate_adjacent_identical_links( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_adjacent_identical_links' ) ) {
+		wp_ada_compliance_basic_validate_adjacent_identical_links( $content, $postinfo );
+	}
 
 	// validate empty th cells.
-	wp_ada_compliance_basic_validate_empty_th( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_empty_th' ) ) {
+		wp_ada_compliance_basic_validate_empty_th( $content, $postinfo );
+	}
 
 	// check for links to non html content.
-	wp_ada_compliance_basic_validate_link_to_non_html_content( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_link_to_non_html_content' ) ) {
+		wp_ada_compliance_basic_validate_link_to_non_html_content( $content, $postinfo );
+	}
 
 	// validate skip nav links in theme files.
-	wp_ada_compliance_basic_validate_skip_nav_links( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_skip_nav_links' ) ) {
+		wp_ada_compliance_basic_validate_skip_nav_links( $content, $postinfo );
+	}
 
 	// validate missing landmarks.
-	wp_ada_compliance_basic_validate_missing_landmarks( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_missing_landmarks' ) ) {
+		wp_ada_compliance_basic_validate_missing_landmarks( $content, $postinfo );
+	}
 
 	// validate unlabeled landmarks.
-	wp_ada_compliance_basic_validate_unlabeled_landmarks( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_unlabeled_landmarks' ) ) {
+		wp_ada_compliance_basic_validate_unlabeled_landmarks( $content, $postinfo );
+	}
 
 	// validate missing laguage attributes in theme files.
-	wp_ada_compliance_basic_validate_missing_lang_attr( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_missing_lang_attr' ) ) {
+		wp_ada_compliance_basic_validate_missing_lang_attr( $content, $postinfo );
+	}
 
 	// carousels that require manual review.
-	wp_ada_compliance_basic_validate_dynamic_carousel( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_dynamic_carousel' ) ) {
+		wp_ada_compliance_basic_validate_dynamic_carousel( $content, $postinfo );
+	}
 
 	// look for links without enough contrast between the text around them.
-	wp_ada_compliance_basic_validate_link_color_contrast_failure( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_link_color_contrast_failure' ) ) {
+		wp_ada_compliance_basic_validate_link_color_contrast_failure( $content, $postinfo );
+	}
 
 	// check for accessibility help options.
-	wp_ada_compliance_basic_validate_accessibility_help( $content, $postinfo );
+	if ( function_exists( 'wp_ada_compliance_basic_validate_accessibility_help' ) ) {
+		wp_ada_compliance_basic_validate_accessibility_help( $content, $postinfo );
+	}
 }
 
 
@@ -264,7 +362,7 @@ function wp_ada_compliance_basic_view_report() {
 	global $post;
 	$enablewave = get_option( 'wp_ada_compliance_basic_enablewave', 'true' );
 	if ( wp_ada_compliance_basic_reported_errors_check( $post->ID, $post->post_type ) ) {
-		$nonce   = wp_create_nonce( 'wp-ada-compliance-nonce' );
+		$nonce = wp_create_nonce( 'wp-ada-compliance-nonce' );
 		echo '<p class="ada_compliance_report_link"><a href="' . esc_url( get_site_url() ) . '/wp-admin/admin.php?page=ada_compliance/compliancereportbasic.php&_wpnonce=' . esc_attr( $nonce ) . '&view=1&errorid=' . esc_attr( $post->ID ) . '&type=' . esc_attr( $post->post_type ) . '&iframe=1&TB_iframe=true&width=900&height=550" class="thickbox btnwpada btnwpada-warning adareportlink">';
 		esc_html_e( 'Accessibility Report', 'wp-ada-compliance-basic' );
 		echo '</a></p>';

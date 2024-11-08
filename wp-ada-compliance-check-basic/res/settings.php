@@ -255,6 +255,9 @@ function wp_ada_compliance_basic_scantypetext() {
 	echo '</a>';
 	esc_html_e( 'to unlock all the great features of this plugin! ', 'wp-ada-compliance-basic' );
 	echo '</h2>';
+	echo '<p class="ada_compliance_settings_text adaRedText" style="max-width: 800px;">';
+	esc_html_e( 'The basic plugin supports WCAG 2.2 Web Accessibility Standards, which is the current WCAG recommended standard. If your organization requires WCAG 2.1 or Section 508 compliance consider upgrading to the full version.', 'wp-ada-compliance-basic' );
+	echo '</p>';
 	echo '<p class="ada_compliance_settings_text">';
 	esc_html_e( 'Choose the website content to be monitored.', 'wp-ada-compliance-basic' );
 	echo '</p>';
@@ -514,6 +517,14 @@ function wp_ada_compliance_basic_settings_posttypes() {
  */
 function wp_ada_compliance_basic_settings_scan_rules() {
 	global $wp_ada_compliance_basic_def;
+
+
+	echo '<p class="adamarketingtext">';
+	esc_html_e( 'The basic plugin supports WCAG 2.2 Web Accessibility Standards, which is the current WCAG recommended standard. If your organization requires WCAG 2.1 or Section 508 compliance consider upgrading to the full version.', 'wp-ada-compliance-basic' );
+	echo ' <a href="https://www.wpadacompliance.com/">';
+	esc_html_e( 'Learn more about the WP ADA Compliance Check plugin', 'wp-ada-compliance-basic' );
+	echo '.</a>';
+	echo '</p>';
 
 	wp_ada_compliance_basic_set_scan_rule_options();
 

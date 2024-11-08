@@ -71,7 +71,7 @@ function wp_ada_compliance_basic_validate_missing_landmarks( $content, $postinfo
 	// check header/banner.
 	$headers = wp_ada_compliance_basic_remove_tags_wrapped_in_excluded_sections( $dom, 'header' );
 	if ( 0 == count( $headers ) ) {
-		$errorcode .= __( 'No banner/header landmark was found (i.e... &lt;header&gt; or role="banner"). The header landmark should contain the prime heading or internal title of a page.  Other landmarks that may be required include complementary or aside, contentinfo of footer, form and search.', 'wp-ada-compliance-basic' );
+		$errorcode .= __( 'No banner/header landmark was found (i.e... &lt;header&gt; or role="banner"). The header landmark should contain the primary heading or internal title of a page.  Other landmarks that may be required include complementary or aside, contentinfo of footer, form and search.', 'wp-ada-compliance-basic' );
 		wp_ada_compliance_basic_insert_landmark_error( $errorcode, $postinfo, $wp_ada_compliance_basic_def, 'missing_landmarks' );
 		$errorcode               = '';
 		$postinfo['examplecode'] = '';
