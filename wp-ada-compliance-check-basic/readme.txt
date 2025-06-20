@@ -1,11 +1,11 @@
 ﻿=== WP ADA Compliance Check Basic - Most Comprehensive Web Accessibility Solution for WordPress ===
 Contributors: seshelby
 Donate link: https://www.wpadacompliance.com/
-Tags: accessibility, ada, section 508, classicpress, accessability, ada compliance, web accessibility, usability, wcag
+Tags: accessibility, ada, section 508, classicpress, accessability, ada compliance, web accessibility, usability, wcag 
 Requires at least: 4.6
 Tested up to: 6.8
 Requires PHP: 5.5
-Stable tag: 3.1.7
+Stable tag: 3.1.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,10 @@ Yes, the WP ADA Compliance Plugin has been tested to work with ClassicPress.
 1. Links to the WAVE Web Accessibility Evaluation tool can be used to browse your website to identify potential problems in your theme files.
 
 == Changelog ==
+= 3.1.8 =
+1. Removed use of depracated mb_convert_encoding function
+1. Corrected fatal PHP error due to too many arguments on strpos function
+
 = 3.1.7 =
 1. Corrected wordpress notice _load_textdomain_just_in_time called incorrectly 
 1. Corrected deprecated PHP code

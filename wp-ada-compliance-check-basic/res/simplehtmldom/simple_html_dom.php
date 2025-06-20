@@ -2174,7 +2174,7 @@ class simple_html_dom
 	{
 		if ($this->char === null) { return ''; }
 
-		if (($pos = strpos($this->doc, $char, $this->pos, 0)) === false) {
+		if (($pos = strpos($this->doc, $char, $this->pos)) === false) {
 			$ret = substr($this->doc, $this->pos, $this->size - $this->pos);
 			$this->char = null;
 			$this->pos = $this->size;

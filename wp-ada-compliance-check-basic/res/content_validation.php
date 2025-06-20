@@ -33,11 +33,6 @@ function wp_ada_compliance_basic_validate_post( $postinfo ) {
 		$content = apply_filters( 'the_content', $content );
 	}
 
-	// correct issues with encoding when website is using non utf-8.
-	if ( function_exists( 'mb_convert_encoding' ) ) {
-		$content = mb_convert_encoding( $content, 'HTML-ENTITIES', 'UTF-8' );
-	}
-
 	/**
 	 * Start validation
 	 */

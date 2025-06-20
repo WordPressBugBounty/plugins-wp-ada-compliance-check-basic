@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP ADA Compliance Check Basic
  * Description: Comply with SECTION 508 and WC3/WCAG Web Accessibility Standards. This easy to use plugin evaluates pages for the most common issues as they are published. Upgrade to the full version to unlock all the great features including complete scans of your website pages, posts, media library images and custom post types.
- * Version: 3.1.7
+ * Version: 3.1.8
  * Plugin URI: https://wordpress.org/plugins/wp-ada-compliance-check-basic/
  * Author: AlumniOnline Web Services LLC
  * Author URI: https://www.wpadacompliance.com/

@@ -360,11 +360,6 @@ function wp_ada_compliance_basic_ignore_check( $errortype, $postid, $objectvalue
  **/
 function wp_ada_compliance_basic_check_if_font_awesome_link_can_be_corrected( $content ) {
 
-	// correct issues with encoding when website is using non utf-8.
-	if ( function_exists( 'mb_convert_encoding' ) ) {
-		$content = mb_convert_encoding( $content, 'HTML-ENTITIES', 'UTF-8' );
-	}
-
 	$dom = new DOMDocument();
 	libxml_use_internal_errors( true );
 	$dom->loadHTML( $content );
