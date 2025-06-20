@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  **/
 function wp_ada_compliance_basic_validate_ambiguous_anchor_tag( $content, $postinfo ) {
 
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	$content = preg_replace( '/&#?[a-z0-9]+;/i', '', $content );
 

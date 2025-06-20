@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * check duplicate page titles
  */
 function wp_ada_compliance_basic_validate_duplicate_title( $postinfo ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 	if ( '' == $postinfo['title'] ) {
 		return 1;
 	}

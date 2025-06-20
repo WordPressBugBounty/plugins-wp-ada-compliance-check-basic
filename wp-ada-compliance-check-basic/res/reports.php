@@ -21,7 +21,8 @@ function wp_ada_compliance_basic_refresh_report_page() {
  * Display stats/error report
  **/
 function wp_ada_compliance_basic_report_page( $scaninprogress = 0 ) {
-	global $wpdb, $wp_ada_compliance_basic_def;
+	global $wpdb;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	// check cap allowed to edit settings.
 	$settingsuser = get_option( 'wp_ada_compliance_basic_settingsusers', 'manage_options' );
@@ -654,7 +655,7 @@ function wp_ada_compliance_basic_report_page( $scaninprogress = 0 ) {
  * Create guidelines reference page
  **/
 function wp_ada_compliance_basic_referencereport_page() {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 	// check cap allowed to edit settings.
 	$settingsuser = get_option( 'wp_ada_compliance_basic_settingsusers', 'manage_options' );
 
@@ -933,7 +934,8 @@ function wp_ada_compliance_basic_error_count( $errorcode, $totalquery, $query_va
  * Create email report
  **/
 function wp_ada_compliance_basic_create_email_report( $email, $postinfo = 0 ) {
-	global $wpdb, $wp_ada_compliance_basic_def;
+	global $wpdb;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 	$showresults          = '';
 	$query_variables_main = array();
 	if ( is_array( $postinfo ) ) {

@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Look for links without enough contrast between the text around them
  **/
 function wp_ada_compliance_basic_validate_link_color_contrast_failure( $content, $postinfo ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	// get options.
 	$wp_ada_compliance_basic_scanoptions = get_option( 'wp_ada_compliance_basic_ignore_scan_rules', array() );

@@ -117,7 +117,7 @@ function wp_ada_compliance_basic_delete_tables() {
  */
 function wp_ada_compliance_basic_remove_options() {
 	foreach ( wp_load_alloptions() as $option => $value ) {
-		if ( 0 === strpos( $option, 'wp_ada_compliance_basic_' ) ) {
+		if ( 0 === strpos( $option, 'wp_ada_compliance_basic_', 0 ) ) {
 			delete_option( $option );
 		}
 	}
@@ -138,7 +138,7 @@ add_filter( 'wpmu_drop_tables', 'wp_ada_compliance_basic_delete_blog' );
  * Update scan options to ignore
  **/
 function wp_ada_compliance_basic_update_scan_rule_ignore_options() {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 	$ignore_rules = array( '' );
 	$scan_rules   = get_option( 'wp_ada_compliance_basic_scan_rules' );
 	if ( '' != $scan_rules ) {
@@ -195,7 +195,7 @@ function wp_ada_compliance_basic_check_version() {
  * Set default scan rule settings
  **/
 function wp_ada_compliance_basic_set_scan_rule_options() {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	$scan_rules   = get_option( 'wp_ada_compliance_basic_scan_rules', '' );
 	$ignore_rules = get_option( 'wp_ada_compliance_basic_ignore_scan_rules', array() );
@@ -313,7 +313,9 @@ function wp_ada_compliance_basic_upgrade_to_version_3_0() {
  * Version 3.0 upgrade code
  */
 function wp_ada_compliance_basic_upgrade_to_version_3_0_1() {
-	global $wpdb, $wp_ada_compliance_basic_def;
+	global $wpdb;
+
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	if ( is_multisite() ) {
 		$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
@@ -400,22 +402,6 @@ function wp_ada_compliance_basic_check_server_requirements() {
 		// check for beaver builder and elementor editor clash.
 	if ( function_exists( 'is_plugin_active' ) && ( is_plugin_active( 'beaver-builder-lite-version/fl-builder.php' ) || is_plugin_active( 'bb-plugin/fl-builder.php' ) ) && is_plugin_active( 'elementor/elementor.php' ) ) {
 		$notice .= '<p>' . __( 'The Beaver Builder and Elementor editors should not be active at the same time when using the WP ADA Compliance plugin.', 'wp-ada-compliance-basic' ) . '</p>';
-	}
-
-	// detect browser support.
-	if ( isset( $_SERVER['HTTP_USER_AGENT'] ) ) {
-		$agent = sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) );
-	} else {
-		$agent = '';
-	}
-	if ( strpos( $agent, 'Windows' )
-		&& ! ( strpos( $agent, 'Opera' ) || strpos( $agent, 'Edge' ) || strpos( $agent, 'Chrome' ) || strpos( $agent, 'Firefox' ) )
-		|| strpos( $agent, 'Macintosh' )
-		&& ! ( strpos( $agent, 'Opera' ) || strpos( $agent, 'Edge' ) || strpos( $agent, 'Chrome' ) || strpos( $agent, 'Firefox' ) || strpos( $agent, 'Safari' ) )
-		|| strpos( $agent, 'Edge/15' ) || strpos( $agent, 'Firefox/5' )
-	) {
-
-		$notice .= '<p>' . __( 'Unsupported Browser: The browser you are using has know issues when using features of this plugin. Please upgrade to the latest version of Edge, Chrome, Firefox, Opera or on Mac Safari is also supported.', 'wp-ada-compliance-basic' ) . '</p>';
 	}
 
 	if ( '' != $notice ) {

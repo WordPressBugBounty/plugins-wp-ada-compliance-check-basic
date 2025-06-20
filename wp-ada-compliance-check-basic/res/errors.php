@@ -167,7 +167,7 @@ function wp_ada_compliance_basic_insert_error( $postinfo, $errortype, $error, $o
 		$externalsrc = '';
 	}
 
-	if ( isset( $postinfo['examplecode'] ) ) {
+	if ( isset( $postinfo['examplecode'] ) && '' !== $postinfo['examplecode'] ) {
 		$examplecode = strip_tags( $postinfo['examplecode'], '<div><img>' );
 	} else {
 		$examplecode = '';
@@ -301,9 +301,9 @@ function wp_ada_compliance_basic_get_ignore_value( $errortype, $onsave, $type, $
 	if ( 'visual_focus_removed' == $errortype && strstr( $objectvalue, 'style=' ) ) {
 		$ignre = 2;
 	}
-	if ( 'elementor_toc' == $errortype ) {
-		$ignre = 2;
-	}
+	// if ( 'elementor_toc' == $errortype ) {
+	// $ignre = 2;
+	// }
 	if ( 'elementor_toggles' == $errortype ) {
 		$ignre = 2;
 	}
@@ -422,7 +422,10 @@ function wp_ada_compliance_basic_get_aria_values( $dom, $element, $field ) {
  * Get error list for affected post
  **/
 function wp_ada_compliance_basic_get_error_list_for_post( $postid, $posttype ) {
-	global $wpdb, $wp_ada_compliance_basic_def;
+	global $wpdb;
+
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
+
 	$errornotices = '';
 
 	$results = $wpdb->get_results( $wpdb->prepare( 'SELECT distinct errorcode FROM ' . $wpdb->prefix . 'wp_ada_compliance_basic where postid = %d and type = %s and scantype = %s and ignre != %d', $postid, $posttype, 'onsave', '1' ), ARRAY_A );
@@ -434,7 +437,7 @@ function wp_ada_compliance_basic_get_error_list_for_post( $postid, $posttype ) {
 		if ( '' != $wp_ada_compliance_basic_def[ $errorcode ]['Reference'] ) {
 			$errornotices .= ' <a href="' . $wp_ada_compliance_basic_def[ $errorcode ]['ReferenceURL'] . '" target="_blank" class="adaNewWindowInfo">' . $wp_ada_compliance_basic_def[ $errorcode ]['Reference'] . '<i class="fas fa-external-link-alt" aria-hidden="true"><span class="wp_ada_hidden">' . __( 'opens in a new window', 'wp-ada-compliance-basic' ) . '</span></i></a>';
 		}
-		$nonce   = wp_create_nonce( 'wp-ada-compliance-nonce' );
+		$nonce             = wp_create_nonce( 'wp-ada-compliance-nonce' );
 			$errornotices .= '<a href="' . esc_url( get_site_url() ) . '/wp-admin/admin.php?page=ada_compliance/compliancereportbasic.php&_wpnonce=' . esc_attr( $nonce ) . '&view=1&errorid=' . esc_attr( $postid ) . '&type=' . esc_attr( $posttype ) . '&iframe=1&TB_iframe=true&width=900&height=550" class="thickbox adaNewWindowInfo adaErrorText adareportlink" target="_blank"><i class="fas fa-eye" aria-hidden="true"></i>';
 			$errornotices .= __( 'View Accessibility Report for Help Options', 'wp-ada-compliance-basic' );
 			$errornotices .= '</a>';

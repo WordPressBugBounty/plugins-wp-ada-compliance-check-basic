@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function wp_ada_compliance_basic_validate_missing_landmarks( $content, $postinfo ) {
 
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	if ( 'onsave' == $postinfo['scantype'] ) {
 		return;

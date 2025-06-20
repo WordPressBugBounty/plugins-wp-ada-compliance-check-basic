@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Look for elementor toggle of accordion widget
  **/
 function wp_ada_compliance_basic_validate_elementor_toggles( $content, $postinfo ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	if ( ! function_exists( 'is_plugin_active' ) ) {
 		require_once ABSPATH . '/wp-admin/includes/plugin.php';

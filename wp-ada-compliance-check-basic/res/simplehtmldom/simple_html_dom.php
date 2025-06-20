@@ -809,7 +809,7 @@ class simple_html_dom_node
 				 * either being exactly "val" or beginning with "val"
 				 * immediately followed by "-" (U+002D).
 				 */
-				return strpos($value, $pattern) === 0;
+				return strpos($value, $pattern, 0) === 0;
 			case '~=':
 				/**
 				 * [att~=val]
@@ -1824,7 +1824,7 @@ class simple_html_dom
 			$tag = $this->copy_until_char('>');
 
 			// Skip attributes in end tags
-			if (($pos = strpos($tag, ' ')) !== false) {
+			if (($pos = strpos($tag, ' ', 0)) !== false) {
 				$tag = substr($tag, 0, $pos);
 			}
 
@@ -1935,7 +1935,7 @@ class simple_html_dom
 
 		// The start tag cannot contain another start tag, if so add as text
 		// i.e. "<<html>"
-		if ($pos = strpos($tag, '<') !== false) {
+		if ($pos = strpos($tag, '<', 0) !== false) {
 			$tag = '<' . substr($tag, 0, -1);
 			$node->_[HDOM_INFO_TEXT] = $tag;
 			$this->link_nodes($node, false);
@@ -2174,7 +2174,7 @@ class simple_html_dom
 	{
 		if ($this->char === null) { return ''; }
 
-		if (($pos = strpos($this->doc, $char, $this->pos)) === false) {
+		if (($pos = strpos($this->doc, $char, $this->pos, 0)) === false) {
 			$ret = substr($this->doc, $this->pos, $this->size - $this->pos);
 			$this->char = null;
 			$this->pos = $this->size;
@@ -2226,7 +2226,7 @@ class simple_html_dom
 		global $debug_object;
 		if (is_object($debug_object)) { $debug_object->debug_log_entry(1); }
 
-		while (($pos = strpos($text, '___noise___')) !== false) {
+		while (($pos = strpos($text, '___noise___', 0)) !== false) {
 			// Sometimes there is a broken piece of markup, and we don't GET the
 			// pos+11 etc... token which indicates a problem outside of us...
 
@@ -2273,7 +2273,7 @@ class simple_html_dom
 		if (is_object($debug_object)) { $debug_object->debug_log_entry(1); }
 
 		foreach($this->noise as $noiseElement) {
-			if (strpos($noiseElement, $text) !== false) {
+			if (strpos($noiseElement, $text, 0) !== false) {
 				return $noiseElement;
 			}
 		}

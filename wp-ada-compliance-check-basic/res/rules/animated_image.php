@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  **/
 function wp_ada_compliance_basic_validate_animated_image( $content, $postinfo ) {
 
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	$dom = str_get_html( $content );
 
@@ -52,7 +52,7 @@ function wp_ada_compliance_basic_isAnimatedGif( $filename ) {
 	}
 
 	if ( false !== strpos(
-		substr( $filecontents, 0, strpos( $filecontents, 'IDAT' ) ),
+		substr( $filecontents, 0, strpos( $filecontents, 'IDAT', 0 ) ),
 		'acTL'
 	) ) {
 		return true;

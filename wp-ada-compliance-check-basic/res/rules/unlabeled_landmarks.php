@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function wp_ada_compliance_basic_validate_unlabeled_landmarks( $content, $postinfo ) {
 
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	// ignore check when scanning database only.
 	if ( 'onsave' == $postinfo['scantype'] ) {

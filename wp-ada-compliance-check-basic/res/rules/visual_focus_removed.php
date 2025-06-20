@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Look for links and focus styles where visual focus indication has been removed.
  */
 function wp_ada_compliance_basic_validate_visual_focus_removed( $content, $postinfo ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	// get options.
 	$wp_ada_compliance_basic_scanoptions = get_option( 'wp_ada_compliance_basic_ignore_scan_rules', array() );
@@ -121,7 +121,7 @@ function wp_ada_compliance_basic_parce_style_content_for_visual_focus_removed( $
  * Scan the content from a css file or style tag inside a post
  **/
 function wp_ada_compliance_basic_scan_css_content_for_visual_focus_removed_violation( $css_array, $postinfo, $type ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	foreach ( $css_array as $element => $rules ) {
 		$elementtemp = explode( '{', $element );

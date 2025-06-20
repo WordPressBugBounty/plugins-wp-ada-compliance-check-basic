@@ -83,7 +83,8 @@ function wp_ada_compliance_basic_validate_ada_post_compliance( $post_id ) {
  * Manual or cron auto scan of post content
  **/
 function wp_ada_compliance_basic_scan_ada_compliance_post( $adacounter ) {
-	global $wpdb, $wp_ada_compliance_basic_error;
+	global $wpdb;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	if ( ! current_user_can( 'edit_pages' ) ) {
 		return 1;

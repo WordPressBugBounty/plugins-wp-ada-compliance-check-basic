@@ -49,7 +49,7 @@ function wp_ada_compliance_basic_validate_posttypes( $values ) {
  * Validate scan rules
  */
 function wp_ada_compliance_basic_validate_scan_rules( $values ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	$allowed = array();
 
@@ -186,7 +186,8 @@ function wp_ada_compliance_basic_sanitize_text_or_array_field( $array_or_string 
  * Validate input
  */
 function wp_ada_compliance_basic_form_values() {
-	global $wpdb, $wp_ada_compliance_basic_def;
+	global $wpdb;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 	$error = '';
 
 	if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_REQUEST['_wpnonce'] ), 'wp-ada-compliance-nonce' ) ) {

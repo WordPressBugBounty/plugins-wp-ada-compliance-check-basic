@@ -4,10 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 /**
- * Look for elementor toc widgets
+ * Look for elementor toc widgets NO LONGER USED
  */
 function wp_ada_compliance_basic_validate_elementor_toc( $content, $postinfo ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	if ( ! function_exists( 'is_plugin_active' ) ) {
 		require_once ABSPATH . '/wp-admin/includes/plugin.php';

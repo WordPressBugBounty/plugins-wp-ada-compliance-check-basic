@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  **/
 function wp_ada_compliance_basic_validate_text_justified( $content, $postinfo ) {
 
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	// get options.
 	$changetext                          = false;

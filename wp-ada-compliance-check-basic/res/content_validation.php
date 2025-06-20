@@ -247,9 +247,9 @@ function wp_ada_compliance_basic_complete_content_validations( $content, $postin
 	}
 
 	// look for elementor toc widgets.
-	if ( function_exists( 'wp_ada_compliance_basic_validate_elementor_toc' ) ) {
-		wp_ada_compliance_basic_validate_elementor_toc( $content, $postinfo );
-	}
+	//if ( function_exists( 'wp_ada_compliance_basic_validate_elementor_toc' ) ) {
+	//	wp_ada_compliance_basic_validate_elementor_toc( $content, $postinfo );
+	//}
 
 	// look for elementor toggle or accordion.
 	if ( function_exists( 'wp_ada_compliance_basic_validate_elementor_toggles' ) ) {
@@ -316,7 +316,7 @@ function wp_ada_compliance_basic_strip_shortcodes( $content ) {
 
 	$shortcodes_array = array( 'embed', 'caption', 'audio', 'video', 'gallery' );
 
-	if ( false === strpos( $content, '[' ) ) {
+	if ( false === strpos( $content, '[', 0 ) ) {
 		return $content;
 	}
 

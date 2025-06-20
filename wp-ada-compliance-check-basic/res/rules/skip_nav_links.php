@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function wp_ada_compliance_basic_validate_skip_nav_links( $content, $postinfo ) {
 
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	// get options.
 	$wp_ada_compliance_basic_scanoptions = get_option( 'wp_ada_compliance_basic_ignore_scan_rules', array() );

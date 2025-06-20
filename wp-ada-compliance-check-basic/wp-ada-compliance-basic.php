@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP ADA Compliance Check Basic
  * Description: Comply with SECTION 508 and WC3/WCAG Web Accessibility Standards. This easy to use plugin evaluates pages for the most common issues as they are published. Upgrade to the full version to unlock all the great features including complete scans of your website pages, posts, media library images and custom post types.
- * Version: 3.1.6
+ * Version: 3.1.7
  * Plugin URI: https://wordpress.org/plugins/wp-ada-compliance-check-basic/
  * Author: AlumniOnline Web Services LLC
  * Author URI: https://www.wpadacompliance.com/
@@ -33,7 +33,6 @@ if ( ! defined( 'MAX_FILE_SIZE' ) ) {
 if ( ! class_exists( 'simple_html_dom' ) ) {
 	require_once plugin_dir_path( __FILE__ ) . 'res/simplehtmldom/simple_html_dom.php';
 }
-
 require plugin_dir_path( __FILE__ ) . 'res/compliance_descriptions.php';
 require plugin_dir_path( __FILE__ ) . 'res/installation.php';
 require plugin_dir_path( __FILE__ ) . 'res/dashboard.php';
@@ -41,11 +40,20 @@ require plugin_dir_path( __FILE__ ) . 'res/security.php';
 require plugin_dir_path( __FILE__ ) . 'res/settings.php';
 require plugin_dir_path( __FILE__ ) . 'res/errors.php';
 require plugin_dir_path( __FILE__ ) . 'res/purgedata.php';
-foreach ( $wp_ada_compliance_basic_def as $rows => $row ) {
-	if ( file_exists( plugin_dir_path( __FILE__ ) . 'res/rules/' . $rows . '.php' ) ) {
-		include plugin_dir_path( __FILE__ ) . 'res/rules/' . $rows . '.php';
+
+add_action(
+	'init',
+	function () {
+		$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
+
+		foreach ( $wp_ada_compliance_basic_def as $rows => $row ) {
+			if ( file_exists( plugin_dir_path( __FILE__ ) . 'res/rules/' . $rows . '.php' ) ) {
+				include plugin_dir_path( __FILE__ ) . 'res/rules/' . $rows . '.php';
+			}
+		}
 	}
-}
+);
+
 require plugin_dir_path( __FILE__ ) . 'res/content_validation.php';
 require plugin_dir_path( __FILE__ ) . 'res/reports.php';
 require plugin_dir_path( __FILE__ ) . 'res/sendmail.php';
@@ -58,6 +66,7 @@ require plugin_dir_path( __FILE__ ) . 'res/vendor/persist-admin-notices-dismissa
 /**
  * FILTERS AND ACTIONS
  */
+
 add_action( 'admin_init', array( 'PAnD', 'init' ) ); // load persistent admin notices.
 add_action( 'admin_enqueue_scripts', 'wp_ada_compliance_basic_admin_scripts' ); // import admin css file.
 add_action( 'wp_enqueue_scripts', 'wp_ada_compliance_basic_scripts' ); // import public css file.

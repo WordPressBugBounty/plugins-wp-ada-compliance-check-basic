@@ -516,7 +516,7 @@ function wp_ada_compliance_basic_settings_posttypes() {
  * Define scan rules
  */
 function wp_ada_compliance_basic_settings_scan_rules() {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 
 	echo '<p class="adamarketingtext">';
@@ -578,6 +578,7 @@ function wp_ada_compliance_basic_settings_scan_rules() {
  * CREATE MENU LINKS AND PAGES
  */
 function wp_ada_compliance_basic_admin_menu() {
+	
 	$settingsuser = get_option( 'wp_ada_compliance_basic_settingsusers', 'manage_options' );
 
 	if ( '' == $settingsuser ) {
@@ -598,10 +599,10 @@ function wp_ada_compliance_basic_admin_menu() {
 		add_submenu_page( 'ada_compliance/compliancereportbasic.php', __( 'Settings', 'wp-ada-compliance-basic' ), __( 'Settings', 'wp-ada-compliance-basic' ), $settingsuser, 'wp-ada-compliance-basic-admin', 'wp_ada_compliance_basic_settings_page' );
 
 		// send report page (hidden from menu).
-		add_submenu_page( null, __( 'Send Report', 'wp-ada-compliance-basic' ), __( 'Send Report', 'wp-ada-compliance-basic' ), 'edit_pages', 'ada_compliance/send-report.php', 'wp_ada_compliance_basic_send_report' );
+		add_submenu_page( '', __( 'Send Report', 'wp-ada-compliance-basic' ), __( 'Send Report', 'wp-ada-compliance-basic' ), 'edit_pages', 'ada_compliance/send-report.php', 'wp_ada_compliance_basic_send_report' );
 
 		// print report page (hidden from menu).
-		add_submenu_page( null, __( 'Print Report', 'wp-ada-compliance-basic' ), __( 'Print Report', 'wp-ada-compliance-basic' ), 'edit_pages', 'ada_compliance/print-report.php', 'wp_ada_compliance_basic_print_report' );
+		add_submenu_page( '', __( 'Print Report', 'wp-ada-compliance-basic' ), __( 'Print Report', 'wp-ada-compliance-basic' ), 'edit_pages', 'ada_compliance/print-report.php', 'wp_ada_compliance_basic_print_report' );
 	}
 }
 /**

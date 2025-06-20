@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function wp_ada_compliance_basic_validate_missing_lang_attr( $content, $postinfo ) {
 
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	if ( 'onsave' == $postinfo['scantype'] ) {
 		return;
@@ -31,7 +31,7 @@ function wp_ada_compliance_basic_validate_missing_lang_attr( $content, $postinfo
 			return;
 		}
 
-		$code = substr( $htmlcode->outertext, 0, strpos( $htmlcode->outertext, '>' ) + 1 );
+		$code = substr( $htmlcode->outertext, 0, strpos( $htmlcode->outertext, '>', 0 ) + 1 );
 		$code = str_replace( 'data-wp-ada-scanner="true"', '', $code );
 
 		// save error.

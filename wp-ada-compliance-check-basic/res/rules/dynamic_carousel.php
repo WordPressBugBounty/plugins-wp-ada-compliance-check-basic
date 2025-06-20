@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function wp_ada_compliance_basic_validate_dynamic_carousel( $content, $postinfo ) {
 
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	$dom = str_get_html( $content );
 
@@ -43,7 +43,7 @@ function wp_ada_compliance_basic_validate_dynamic_carousel( $content, $postinfo 
  * Check for generic flex slider
  **/
 function wp_ada_compliance_basic_check_for_generic_flexslider_carousels( $dom, $postinfo ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	$elements        = $dom->find( '[class*=flexslider]' );
 	$carouselcounter = 1;
@@ -103,7 +103,7 @@ function wp_ada_compliance_basic_check_for_generic_flexslider_carousels( $dom, $
  * Check for elementor carousel
  **/
 function wp_ada_compliance_basic_check_for_elementor_carousels( $dom, $postinfo ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	$elements        = $dom->find( '[class*=elementor-widget-image-carousel]' );
 	$carouselcounter = 1;
@@ -159,7 +159,7 @@ function wp_ada_compliance_basic_check_for_elementor_carousels( $dom, $postinfo 
  * Check for metaslider
  **/
 function wp_ada_compliance_basic_check_for_metaslider_carousels( $dom, $postinfo ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	$foundslider = 0;
 
@@ -231,7 +231,7 @@ function wp_ada_compliance_basic_check_for_metaslider_carousels( $dom, $postinfo
  * Check for owl carousel
  **/
 function wp_ada_compliance_basic_check_for_owl_carousels( $dom, $postinfo ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	$elements        = $dom->find( '[class*=owl-carousel]' );
 	$carouselcounter = 1;

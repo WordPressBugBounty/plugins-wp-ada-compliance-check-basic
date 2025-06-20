@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Look for links without a visual cue
  **/
 function wp_ada_compliance_basic_validate_link_without_visual_cue( $content, $postinfo ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	// get options.
 	$wp_ada_compliance_basic_scanoptions = get_option( 'wp_ada_compliance_basic_ignore_scan_rules', array() );
@@ -107,7 +107,7 @@ function wp_ada_compliance_basic_parce_css( $css ) {
  * Scan the content from a css file or style tag inside a post
  */
 function wp_ada_compliance_basic_scan_css_content( $css_array, $postinfo ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 	foreach ( $css_array as $element => $rules ) {
 		if ( ( stristr( $element, 'a:' )
 		|| stristr( $element, 'a[' )

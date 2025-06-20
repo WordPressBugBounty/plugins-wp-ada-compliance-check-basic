@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  **/
 function wp_ada_compliance_basic_validate_av_tag_with_autoplay( $content, $postinfo ) {
 
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	$dom = str_get_html( $content );
 

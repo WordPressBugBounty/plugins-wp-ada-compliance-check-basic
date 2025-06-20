@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Look for foreground && background colors without enough contrast
  **/
 function wp_ada_compliance_basic_validate_color_contrast_failure( $content, $postinfo ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	// get options.
 	$wp_ada_compliance_basic_scanoptions = get_option( 'wp_ada_compliance_basic_ignore_scan_rules', array() );
@@ -76,7 +76,7 @@ function wp_ada_compliance_basic_validate_color_contrast_failure( $content, $pos
 
 				// reverse array if background color is before background.
 				if ( isset( $rules ) ) {
-					if ( strpos( $element->getAttribute( 'style' ), 'background-color:' ) > strpos( $element->getAttribute( 'style' ), 'background:' ) ) {
+					if ( strpos( $element->getAttribute( 'style' ), 'background-color:', 0 ) > strpos( $element->getAttribute( 'style' ), 'background:', 0 ) ) {
 						$rules = array_reverse( $rules );
 					}
 
@@ -184,7 +184,7 @@ function wp_ada_compliance_basic_parce_css_content( $css ) {
  * Scan the content from a css file or style tag inside a post
  **/
 function wp_ada_compliance_basic_check_contrast( $css_array, $postinfo ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	foreach ( $css_array as $element => $rules ) {
 

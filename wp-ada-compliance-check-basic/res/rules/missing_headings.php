@@ -18,7 +18,7 @@ function wp_ada_compliance_basic_validate_missing_headings( $content, $postinfo 
 		return 1;
 	}
 
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	$dom = str_get_html( $content );
 

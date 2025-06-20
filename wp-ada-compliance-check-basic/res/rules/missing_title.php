@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Check missing page titles
  */
 function wp_ada_compliance_basic_validate_missing_title( $content, $postinfo ) {
-	global $wp_ada_compliance_basic_def;
+	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
 	if ( 'widget' == $postinfo['type'] ) {
 		return 1;
