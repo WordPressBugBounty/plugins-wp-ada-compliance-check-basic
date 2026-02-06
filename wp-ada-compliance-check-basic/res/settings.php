@@ -51,6 +51,13 @@ function wp_ada_compliance_basic_admin_init() {
 	register_setting( 'wp_ada_compliance_basic_options', 'wp_ada_compliance_basic_use_accessibility_widget' );
 	add_settings_field( 'wp_ada_compliance_basic_use_accessibility_widget', '', 'wp_ada_compliance_basic_settings_use_accessibility_widget', 'wp_ada_compliance_basic', 'wp_ada_compliance_basic_widget' );
 
+	add_settings_section( 'wp_ada_compliance_basic_browser_extension', __( 'Browser Extension - (Full Version Only)', 'wp-ada-compliance-basic' ), 'wp_ada_compliance_basic_browser_extension_text', 'wp_ada_compliance_basic' );
+
+	register_setting( 'wp_ada_compliance_basic_options', 'wp_ada_compliance_basic_use_browser_extension' );
+	add_settings_field( 'wp_ada_compliance_basic_use_browser_extension', '', 'wp_ada_compliance_basic_settings_use_browser_extension', 'wp_ada_compliance_basic', 'wp_ada_compliance_basic_browser_extension' );
+
+	
+
 	add_settings_section( 'wp_ada_compliance_basic_main', __( 'Misc Settings', 'wp-ada-compliance-basic' ), 'wp_ada_compliance_basic_text', 'wp_ada_compliance_basic' );
 
 	register_setting(
@@ -168,6 +175,14 @@ function wp_ada_compliance_basic_widget_text() {
 }
 
 /**
+ * Browser Extension section text goes here
+ */
+function wp_ada_compliance_basic_browser_extension_text() {
+}
+
+
+
+/**
  * Filter section text goes here
  */
 function wp_ada_compliance_basic_filtertext() {
@@ -224,6 +239,35 @@ function wp_ada_compliance_basic_settings_use_accessibility_widget() {
 	echo '<p style="margin: 40px;"><img src="' . esc_url_raw( plugin_dir_url( __FILE__ ) ) . '/widget.png" width="396" height="667" alt="';
 	esc_html_e( 'Web Accessibility Widget', 'wp-ada-compliance-basic' );
 	echo '"></p>';
+}
+
+/**
+ * Display accessibility browser extension settings
+ */
+function wp_ada_compliance_basic_settings_use_browser_extension() {
+
+	echo '<p class="adamarketingtext">';
+	esc_html_e( 'Upgrade to the full version to enable the web accessibility browser extension. When enabled, the web accessibility browser extension provides a visual reference for the errors on your website. The browser extension marks important structural content, identifies errors that may only be found in the browser and highlights issues making them easier to identify and correct.', 'wp-ada-compliance-basic' );
+	echo '</p>';
+
+	echo '<p style="margin: 40px; padding-bottom: 100px;">';
+	echo '<img src="' . esc_url_raw( plugin_dir_url( __FILE__ ) ) . '/structure_tags.png"  alt="';
+	esc_html_e( 'Error Markers', 'wp-ada-compliance-basic' );
+	echo '">';
+	echo '</p>';
+
+	echo '<p style="margin: 40px; padding-bottom: 100px;">';
+	echo '<img src="' . esc_url_raw( plugin_dir_url( __FILE__ ) ) . '/page_errors.png" alt="';
+	esc_html_e( 'Overlay Errors', 'wp-ada-compliance-basic' );
+	echo '">';
+	echo '</p>';
+
+	echo '<p style="margin: 40px; padding-bottom: 100px;">';
+	echo '<img src="' . esc_url_raw( plugin_dir_url( __FILE__ ) ) . '/code_viewer.png"  alt="';
+	esc_html_e( 'Browser Extension', 'wp-ada-compliance-basic' );
+	echo '">';
+	echo '</p>';
+
 }
 
 /**
