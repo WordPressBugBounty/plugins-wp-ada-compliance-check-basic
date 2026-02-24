@@ -91,7 +91,7 @@
   color: #000;
   padding: 5px;
 }
-.wp-ada-compliance-location:hover .wp-ada-screen-reader-text {
+.wp-ada-compliance-location:hover .wp-ada-screen-reader-text, .wpda-compliance-score:hover .wp-ada-screen-reader-text {
   z-index: 1000;
   position: absolute;
   top: 3em;
@@ -156,19 +156,42 @@
 }
 
 li.wp_ada_light {
-  font-size: 120%;
+  font-size: 12pt;
   list-style: none;
+  position: relative;
 }
 li.wp_ada_light .fa-circle {
-  font-size: 250%;
+  font-size: 35pt;
   margin-right: 10px;
   float: left;
   margin-bottom: 50px;
 }
 li.wp_ada_light span {
-  margin-left: 0px !important;
+
   white-space: normal;
 }
+li.wp_ada_light span.wpda-compliance-score {
+  color: #fff;
+  font-size: 18pt;
+  position: absolute;
+  top: 17px;
+  left: 10px;
+  cursor: help;
+}
+li .wp_ada_light_yellow span.wpda-compliance-score{
+ color: #000; 
+}
+
+li span.wpda-compliance-score-description{
+  color: #000  !important;
+  font-size: 10pt !important;
+  border: 1px solid #000;
+  background: #eee;
+  padding: 10px;
+  width: 500px;
+  font-weight: normal;
+}
+
 .wp_ada_light_green {
   color: #005700;
   font-size: 120%;

@@ -55,6 +55,7 @@ function wp_ada_compliance_basic_dashboard_summary() {
 	if ( 0 == $totalitems ) {
 		$percent        = 0;
 		$percentdisplay = 0;
+		$score = '';
 	} else {
 		$percent        = round( ( $totalpages ) / ( $totalitems ) * 100, PHP_ROUND_HALF_UP );
 		$percentdisplay = round( ( $totalpages ) / ( $totalitems ) * 100 );
@@ -64,6 +65,7 @@ function wp_ada_compliance_basic_dashboard_summary() {
 		$percent        = 1;
 		$percentdisplay = 1;
 	}
+
 	if ( $percent < 20 ) {
 		$class = 'wp_ada_light_green';
 	} elseif ( $percent >= 20 && $percent < 50 ) {
@@ -73,6 +75,8 @@ function wp_ada_compliance_basic_dashboard_summary() {
 	} else {
 		$class = '';
 	}
+
+	//$score = "NR";
 
 	// display protected issues.
 	echo '<ul class="wp_ada_summary_left ">';
@@ -135,8 +139,10 @@ function wp_ada_compliance_basic_dashboard_summary() {
 	esc_html_e( ' issues ', 'wp-ada-compliance-basic' );
 	echo '</li>';
 
-	echo '<li class="adaViewbar ' . esc_attr( $class ) . ' wp_ada_light" style="max-width: 500px; white-space: normal;"><i class="fas fa-circle"></i><span>';
-
+	echo '<li class="adaViewbar ' . esc_attr( $class ) . ' wp_ada_light" style="max-width: 500px; white-space: normal;"><span class="wpda-compliance-score">' . esc_attr( $score ) . '<span class="wpda-compliance-score-description wp-ada-screen-reader-text">';
+	echo '<span class="adaRedText">' . esc_html__( ' Your WP ADA Compliance Check accessibility score is: NOT RATED (Upgrade to the full version to unlock your rating) - ', 'wp-ada-compliance-basic' ) . '</span>';
+	echo '' . esc_html__( 'The Accessibility Score is a rating between 0-100 that indicates the page or websites level of compliance with WGAG standards. In deriving this score the number of possible errors, number of actual errors and the severity of each error were considered. A higher score means fewer/less severe issues. A score in the 90 to 100 range may indicate that the website meets most WCAG criteria and is highly accessible. Screen reader testing and manual audits should be conducted to ensure compliance.', 'wp-ada-compliance-basic' );
+	echo '</span></span><i class="fas fa-circle"></i><span>';
 	echo esc_html( $percentdisplay );
 	esc_html_e( '% of your site has issues ', 'wp-ada-compliance-basic' );
 	echo '</span><br />';

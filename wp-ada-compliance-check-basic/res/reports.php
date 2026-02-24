@@ -24,6 +24,7 @@ function wp_ada_compliance_basic_report_page( $scaninprogress = 0 ) {
 	global $wpdb;
 	$wp_ada_compliance_basic_def = wp_ada_compliance_basic_def();
 
+	
 	// check cap allowed to edit settings.
 	$settingsuser = get_option( 'wp_ada_compliance_basic_settingsusers', 'manage_options' );
 

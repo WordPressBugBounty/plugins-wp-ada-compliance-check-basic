@@ -5,7 +5,7 @@ Tags: accessibility, ada, section 508, classicpress, accessability, ada complian
 Requires at least: 4.6
 Tested up to: 6.9
 Requires PHP: 5.5
-Stable tag: 3.1.9
+Stable tag: 3.1.10
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,9 @@ Yes, the WP ADA Compliance Plugin has been tested to work with ClassicPress.
 1. Links to the WAVE Web Accessibility Evaluation tool can be used to browse your website to identify potential problems in your theme files.
 
 == Changelog ==
+= 3.1.10 =
+1. Added marketing messages
+
 = 3.1.9 =
 1. Added screen shots of the new browser extension
 
