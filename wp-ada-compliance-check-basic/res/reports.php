@@ -445,7 +445,7 @@ function wp_ada_compliance_basic_report_page( $scaninprogress = 0 ) {
 			echo '<th scope="column" >';
 			esc_html_e( 'Issue', 'wp-ada-compliance-basic' );
 			echo '</th>';
-			echo '<th scope="column" class="printhidden">';
+			echo '<th scope="column" class="printhidden wp_ada_code_column">';
 			esc_html_e( 'Affected Code', 'wp-ada-compliance-basic' );
 			echo '</th>';
 			echo '<th scope="column" class="printhidden wp_ada_action_column">';
@@ -504,17 +504,22 @@ function wp_ada_compliance_basic_report_page( $scaninprogress = 0 ) {
 					if ( '' != $wp_ada_compliance_basic_def[ $row['errorcode'] ]['Reference'] ) {
 						echo ' <a href="' . esc_url( $wp_ada_compliance_basic_def[ $row['errorcode'] ]['ReferenceURL'] ) . '" target="_blank" class="adaNewWindowInfo">' . wp_kses_post( $wp_ada_compliance_basic_def[ $row['errorcode'] ]['Reference'] ) . ' <i class="fas fa-external-link-alt" aria-hidden="true"><span class="wp_ada_hidden">' . esc_html__( 'opens in a new window', 'wp-ada-compliance-basic' ) . '</span></i></a>';
 					}
-					echo '<a href="#" class="adaHelpLinkToggle  adaHelpLink viewHelp' . esc_attr( $row['id'] ) . '"><i class="fas fa-question-circle" aria-hidden="true"></i> ' . esc_html__( 'HELP', 'wp-ada-compliance-basic' ) . '</a>';
-					echo '<div class="adaHelpText helptext' . esc_attr( $row['id'] ) . '">' . wp_kses_post( $wp_ada_compliance_basic_def[ $row['errorcode'] ]['HelpINSTR'] );
+					$uniqid = uniqid();
+					echo '<a href="#" class="wp-ada-compliance-modal-open " data-id="helptext' . esc_attr($uniqid) . '"><i class="fas fa-question-circle" aria-hidden="true"></i> ' . esc_html__( 'HELP', 'wp-ada-compliance-basic' ) . '</a>';
+					
+						echo '<div class="adaHelpText helptext' . esc_attr($uniqid) . ' wp-ada-compliance-modal-wrapper" aria-label="' . esc_html__('Help Dialog', 'wp-ada-compliance') . '" role="dialog" aria-modal="true" id="helptext' . esc_attr($uniqid) . '">
+						<div class="wp-ada-compliance-modal-inner">
+						<a class="wp-ada-compliance-modal-close" href="#" role="button"><i aria-hidden="true" class="fas fa-times"></i><span class="screen-reader-text">' . esc_html__('Close', 'wp-ada-compliance') . '</span></a>';
+						echo wp_kses_post( $wp_ada_compliance_basic_def[ $row['errorcode'] ]['HelpINSTR'] );
 					if ( '' != $wp_ada_compliance_basic_def[ $row['errorcode'] ]['HelpURL'] ) {
 						echo ' <a href="' . esc_url( $wp_ada_compliance_basic_def[ $row['errorcode'] ]['HelpURL'] ) . '" target="_blank" class="adaViewbar adaNewWindowInfo">' . esc_html__( 'More Help', 'wp-ada-compliance-basic' ) . '  <i class="fas fa-external-link-alt" aria-hidden="true"><span class="wp_ada_hidden">' . esc_html__( 'opens in a new window', 'wp-ada-compliance-basic' ) . '</span></i></a>';
 					}
-					echo '</div>';
+						echo '</div></div>';
 				}
 
 				echo '</td>';
 				echo '<td class="printfixedwidth">';
-				echo '<span class="viewCode' . esc_attr( $row['id'] ) . ' adaViewCode"><a href="#" data-id="code' . esc_attr( $row['id'] ) . '" class="wp-ada-compliance-modal-open" name="' . esc_html__( 'Code View', 'wp-ada-compliance' ) . '"><i class="fas fa-eye" aria-hidden="true"></i>';
+				echo '<span class="viewCode' . esc_attr( $row['id'] ) . ' adaViewCode"><a href="#" data-id="code' . esc_attr( $row['id'] ) . '" class="wp-ada-compliance-modal-open wpada_btn" name="' . esc_html__( 'Code View', 'wp-ada-compliance' ) . '"><i class="fas fa-eye" aria-hidden="true"></i>';
 				esc_html_e( 'View Code', 'wp-ada-compliance-basic' );
 				echo '</a></span>';
 
@@ -547,6 +552,7 @@ function wp_ada_compliance_basic_report_page( $scaninprogress = 0 ) {
 				$nonce = wp_create_nonce( 'wp-ada-compliance-nonce' );
 
 				echo '<td class="wp_ada_action_column printhidden"> ';
+				echo '<div class="wp_ada_action_vertical_group">';
 				echo '<div><a href="#" class="wp-ada-ignore-options-click wp-ada-ignore-options-click' . esc_attr( $row['id'] ) . '"><i class="fas fa-cog" aria-hidden="true"></i>' . esc_html__( 'Ignore', 'wp-ada-compliance-basic' ) . '</a>';
 
 				echo '<span class="wp-ada-ignore-options wp-ada-ignore-options' . esc_attr( $row['id'] ) . '">';
@@ -559,15 +565,15 @@ function wp_ada_compliance_basic_report_page( $scaninprogress = 0 ) {
 					}
 					echo '" title="' . esc_html__( 'Ignore this instance of the error.', 'wp-ada-compliance-basic' ) . '" id="wpadaignore_' . esc_attr( $row['id'] ) . '_' . esc_attr( $row['ignre'] ) . '" class="wp_ada_compliance_basic_ignoreerror addignore"><i class="fas fa-eye-slash" aria-hidden="true"></i>';
 					esc_html_e( 'This Error', 'wp-ada-compliance-basic' );
-					echo '</a><br />';
+					echo '</a>';
 
 					echo ' <a class="basicdisabled" title="' . esc_html__( 'Ignore all errors of this type found in this page. (Not available in the basic version) ', 'wp-ada-compliance-basic' ) . '" aria-hidden="true" tabindex="-1"><i class="fas fa-list" aria-hidden="true"></i>';
 					esc_html_e( 'In This Page', 'wp-ada-compliance-basic' );
-					echo '</a><br />';
+					echo '</a>';
 
 					echo ' <a class="basicdisabled" title="' . esc_html__( 'Ignore this issue and all errors that appear to be duplicates of it. (Not available in the basic version) ', 'wp-ada-compliance-basic' ) . '" aria-hidden="true" tabindex="-1"><i class="far fa-clone" aria-hidden="true"></i>';
 					esc_html_e( 'Duplicates', 'wp-ada-compliance-basic' );
-					echo '</a><br />';
+					echo '</a>';
 
 				}
 
@@ -578,18 +584,18 @@ function wp_ada_compliance_basic_report_page( $scaninprogress = 0 ) {
 					}
 					echo '" title="' . esc_html__( 'Remove ignore from this error instance.', 'wp-ada-compliance-basic' ) . '" id="wpadaignore_' . esc_attr( $row['id'] ) . '_' . esc_attr( $row['ignre'] ) . '" class="wp_ada_compliance_basic_ignoreerror removeignore"><i class="fas fa-times-circle"></i>';
 					esc_html_e( 'This Error', 'wp-ada-compliance-basic' );
-					echo '</a><br />';
+					echo '</a>';
 
 				}
 				if ( current_user_can( $settingsuser ) ) {
 					echo '<a href="' . esc_url( get_site_url() ) . '/wp-admin/admin.php?page=ada_compliance/compliancereportbasic.php&_wpnonce=' . esc_attr( $nonce ) . '&wpada_ignore_rule=' . esc_attr( $row['errorcode'] ) . '&type=' . esc_attr( $type ) . '&view=' . esc_attr( $view ) . '&sort=' . esc_attr( $sort ) . '&errorid=' . esc_attr( $errorid ) . '&searchtitle=' . esc_attr( stripslashes( $searchtitle ) ) . '" title="' . esc_html__( 'Remove this error from the results as well as future scans.', 'wp-ada-compliance-basic' ) . '" id="wpadaignorerule|' . esc_attr( $row['id'] ) . '|' . esc_attr( $row['errorcode'] ) . '" class="wp_ada_compliance_basic_ignorerule"><i class="fas fa-tasks" aria-hidden="true"></i>';
 					esc_html_e( 'This Rule', 'wp-ada-compliance-basic' );
-					echo '</a><br />';
+					echo '</a>';
 				}
 
 				echo ' <a title="' . esc_html__( 'Remove this item from the results and future scans. (Not available in the basic version) ', 'wp-ada-compliance-basic' ) . '" aria-hidden="true" tabindex="-1" class="basicdisabled"><i class="far fa-file" aria-hidden="true"></i>';
 				esc_html_e( 'This File', 'wp-ada-compliance-basic' );
-				echo '</a><br />';
+				echo '</a>';
 				echo '</span>';
 				echo '</div>';
 
@@ -598,24 +604,24 @@ function wp_ada_compliance_basic_report_page( $scaninprogress = 0 ) {
 					echo '<a href="' . esc_url( get_site_url() ) . '/wp-admin/admin.php?page=ada_compliance/compliancereportbasic.php&scansingle=1&errorid=' . esc_attr( $row['id'] ) . '&sort=' . esc_attr( $sort ) . '&type=' . esc_attr( $row['type'] ) . '&taxonomy=' . esc_attr( $row['taxonomy'] ) . '&postid=' . esc_attr( $row['postid'] ) . '&view=' . esc_attr( $view ) . '&searchtitle=' . esc_attr( $row['postid'] ) . '" class="wp_ada_compliance_basic_recheck" id="' . esc_attr( $row['type'] ) . '|' . esc_attr( $row['postid'] ) . '"><i class="fas fa-sync-alt" aria-hidden="true"></i>';
 					esc_html_e( 'Recheck', 'wp-ada-compliance-basic' );
 					echo '</a>';
-					echo '<br />';
+			
 
 					echo '<a href="post.php?post=' . esc_attr( $row['postid'] ) . '&action=edit"  target="_blank" class="adaNewWindowInfo"><i class="far fa-edit" aria-hidden="true" ></i>';
 					esc_html_e( 'Edit', 'wp-ada-compliance-basic' );
 					echo ' <i class="fas fa-external-link-alt" aria-hidden="true"><span class="wp_ada_hidden">' . esc_html__( 'opens in a new window', 'wp-ada-compliance-basic' ) . '</span></i></a>';
-					echo '<br />';
+			
 
 					echo '<a href="' . esc_url( get_permalink( $row['postid'] ) ) . '" target="_blank" class="adaNewWindowInfo"><i class="fas fa-eye" aria-hidden="true" ></i>';
 					esc_html_e( 'View', 'wp-ada-compliance-basic' );
 					echo ' <i class="fas fa-external-link-alt" aria-hidden="true"><span class="wp_ada_hidden">' . esc_html__( 'opens in a new window', 'wp-ada-compliance-basic' ) . '</span></i></a>';
-					echo '<br />';
+				
 
 				}
 
 				echo '<a href="#" onclick="return false;" tabindex="-1" style="margin-left:0px;" class="wp_ada_label wp_ada_label_disabled" title="' . esc_html__( 'Notes are not available in the basic version, upgrade to the full version to share notes with team members.', 'wp-ada-compliance-basic' ) . '"><i class="far fa-sticky-note" aria-hidden="true"></i>';
 				esc_html_e( 'Notes', 'wp-ada-compliance-basic' );
 				echo '</a>';
-
+	echo '</div>';
 				echo '</td>';
 				echo '</tr>';
 			}

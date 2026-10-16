@@ -3,14 +3,14 @@ Contributors: seshelby
 Donate link: https://www.wpadacompliance.com/
 Tags: accessibility, ada, section 508, classicpress, accessability, ada compliance, web accessibility, usability, wcag 
 Requires at least: 4.6
-Tested up to: 6.9
+Tested up to: 7.1
 Requires PHP: 5.5
-Stable tag: 3.1.10
+Stable tag: 3.1.11
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
-WP ADA Compliance Check is the most comprehensive web accessibility solution for WordPress. Trusted by thousands of small business, government and educational institution websites to comply with Section 508 and WCAG 2.2 LEVEL A/AA Web Accessibility Standards. Our WordPress Web Accessibility plugin includes 81 individual error checks, far more than comparable solutions. It evaluates content for Web Accessibility issues anywhere on your website. It integrates seamlessly into your workflow, evaluating your website for Web Accessibility issues when content is published or you can run a complete scan of your website to identify issues in all of your content. Accessibility reports provide references and easy to follow instructions. No other solution compares in ease of use. The basic version is limited to 15 posts or pages during full scans, has a smaller rule set (52 error checks) and is unable to identify issues found in theme files. The full version corrects many common issues automatically using convenient, time saving filter options built into the plugin. [Visit our website to compare versions and review a complete list of features.](https://www.wpadacompliance.com/) 
+WP ADA Compliance Check is a comprehensive web accessibility solution designed to audit your entire website—including posts, pages, templates, images, iframe embeds, and untagged PDFs. It evaluates websites against WCAG 2.1, WCAG 2.2, or Section 508 standards, integrates seamlessly into your workflow, evaluating your website for Web Accessibility issues when content is published or you can run a complete scan of your website to identify issues in all of your content. Accessibility reports provide references and easy to follow instructions. The basic version is limited to 15 posts or pages during full scans, has a smaller rule set (52 error checks) and is unable to identify issues found in theme files. The full version corrects many common issues automatically using convenient, time saving filter options built into the plugin. [Visit our website to compare versions and review a complete list of features.](https://www.wpadacompliance.com/) 
 
 **Works with any website editor, including:**
 **Gutenberg Compatible**
@@ -27,6 +27,8 @@ WP ADA Compliance Check is the most comprehensive web accessibility solution for
 **[PRO]** Identifies untagged PDF files.
 **[PRO]** Integrates with our free HTML Validation plugin to pinpoint HTML validation errors that result in inaccessible web pages.
 **[PRO]** Includes 83 accessibility checks, many that are not available in the free version (the free version currently has 52 checks).
+**[PRO]** Agency white labeling allows you to give clients a premium experience while keeping your agency front and center.
+**[PRO]** Stops inaccessible content by blocking the publication of posts or pages that fail accessibility checks before they go live.
 
 [Visit our website to learn more about the features included in the PRO version.](https://www.wpadacompliance.com/) 
 
@@ -93,6 +95,9 @@ Yes, the WP ADA Compliance Plugin has been tested to work with ClassicPress.
 1. Links to the WAVE Web Accessibility Evaluation tool can be used to browse your website to identify potential problems in your theme files.
 
 == Changelog ==
+= 3.1.11 =
+1. Redesigned interface with Font Awesome 7 support
+
 = 3.1.10 =
 1. Added marketing messages
 

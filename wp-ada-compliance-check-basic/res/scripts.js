@@ -92,16 +92,6 @@ jQuery(document).ready(function ($) {
 
   wp_ada_compliance_basic_setbutton_eventListener();
 
-  // toggle help links
-  $("body").on("click", ".adaHelpLinkToggle", function (event) {
-    event.preventDefault();
-    $(this)
-      .parent()
-      .find(".adaHelpText")
-      .toggle("slow", function () {
-        // Animation complete.
-      });
-  });
 
   // toggle ignore options
   $("body").on("click", ".wp-ada-ignore-options-click", function () {
@@ -548,20 +538,22 @@ jQuery(document).ready(function ($) {
   }
 
 // correct spacebar not triggering button clicks keypress
-$("body").on("keypress", ".wp-ada-compliance-modal-open", function (event) {
+$("body").on("keypress", ".wp-ada-compliance-modal-open, .wp-ada-compliance-modal-close", function (event) {
+
   
   var code = event.key || event.code; //Get keycode.
   if (code != 'Tab' && code != ' ' && code != 'Enter' && code != 'ArrowLeft' && code != 'ArrowUp' && code != 'ArrowRight' && code != 'ArrowDown') //Check each key.
       return; //If it isn't any of those, don't worry about it.
 
-  if ((code == ' ' || code == 'Enter' || code == 'ArrowLeft' || code == 'ArrowRight') && $(':focus').is('input')) //If a space/enter or left/right arrow is pressed in the input, then allow it to happen as normal.
+  if ((code == ' ' || code == 'Enter' || code == 'ArrowLeft' || code == 'ArrowRight') && jQuery(':focus').is('input')) //If a space/enter or left/right arrow is pressed in the input, then allow it to happen as normal.
       return;
-
+  console.log('here');
   event.preventDefault()
 
 jQuery(this).trigger('click');
 
 });
+
 
 
 /* show modal */
@@ -604,6 +596,7 @@ jQuery("body").on("click", "a.wp-ada-compliance-modal-close", function (e) {
   }
 
 });
+
 // close all open modals on escape
 jQuery(document).on("keydown", function (e) {
 

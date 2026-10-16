@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP ADA Compliance Check Basic
  * Description: Comply with SECTION 508 and WC3/WCAG Web Accessibility Standards. This easy to use plugin evaluates pages for the most common issues as they are published. Upgrade to the full version to unlock all the great features including complete scans of your website pages, posts, media library images and custom post types.
- * Version: 3.1.10
+ * Version: 3.1.11
  * Plugin URI: https://wordpress.org/plugins/wp-ada-compliance-check-basic/
  * Author: AlumniOnline Web Services LLC
  * Author URI: https://www.wpadacompliance.com/
@@ -226,7 +226,7 @@ function wp_ada_compliance_basic_admin_scripts() {
 		wp_enqueue_style( 'wp-ada-compliance-basic-styles' );
 
 		// font awesome.
-		wp_register_style( 'wp-ada-compliance-basic-fontawesome-styles', 'https://use.fontawesome.com/releases/v5.15.4/css/all.css', array(), '' );
+		wp_register_style( 'wp-ada-compliance-basic-fontawesome-styles', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css', array(), '' );
 		wp_enqueue_style( 'wp-ada-compliance-basic-fontawesome-styles' );
 
 		// tabs for admin page.
@@ -377,9 +377,6 @@ function wp_ada_compliance_basic_notification() {
 
 	esc_html_e( 'WP ADA Compliance Basic is limited to 15 posts or pages, includes 22 fewer error checks and will not scan your entire website. For custom post types, archives, terms and content outside of WordPress upgrade to the full version, use the WAVE web accessibility evaluation tool or our free single page scanner to identify issues.', 'wp-ada-compliance-basic' );
 
-echo '<p style="font-weight: bold; color: #c91215; font-size: 150%;">';
-	esc_html_e( '50% off WP ADA Compliance Check 1 Site License - TODAY ONLY - Enter promo code 50OFFNEWSUB during checkout to receive 50% off a single site license of the WP ADA Compliance Check plugin.', 'wp-ada-compliance-basic' );
-	echo '</p>';
 	echo '</div>';
 }
 add_action( 'admin_notices', 'wp_ada_compliance_basic_notification' );

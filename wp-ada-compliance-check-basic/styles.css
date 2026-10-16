@@ -212,11 +212,10 @@ li span.wpda-compliance-score-description{
   width: 120px;
 }
 .basicdisabled {
-  color: #cfcaca;
+  color: #cfcaca !important;
 }
 .wp-ada-ignore-options {
   display: none;
-  margin-left: 20px;
   padding-bottom: 5px;
 }
 .wp-ada-ignore-options-click {
@@ -426,6 +425,9 @@ a span.adaNewWindow {
 .adaError h2 {
   color: #fff;
 }
+h3.adaRedText {
+margin-left: 25px;
+}
 .adaErrorText {
   color: #fff;
   margin-left: 10px;
@@ -435,7 +437,7 @@ a span.adaNewWindow {
   color: #005700;
 }
 .adaRedText {
-  color: #c91215;
+  color: #c91215 !important;
 }
 .adaBoldText {
   font-weight: bold;
@@ -448,29 +450,60 @@ a span.adaNewWindow {
   margin-top: 20px !important;
 }
 .ada_error {
-  width: 98%;
-}
-.ada_error {
+  /* Layout & Positioning */
   clear: both;
-  border: 1px solid #ccc;
   vertical-align: top;
-  border-collapse: collapse;
-  background-color:#fff;
+  width: 98%;                  
+  border-collapse: separate;    
+  border-spacing: 0;            
+  
+  /* Borders & Radii */
+  border: 1px solid #e2e8f0;    
+  border-radius: 12px;          
+  overflow: hidden;             
+  
+  /* Styling & Shadow */
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.03); 
 }
-.ada_error,
-.ada_error td,
-.ada_error th {
-  border: 1px solid #ccc;
-  vertical-align: top;
+
+/* Base cell formatting */
+.ada_error th, 
+.ada_error td {
+  padding: 14px 16px;           
+  text-align: left;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.875rem;          
 }
-.ada_error td,
+
+/* Distinct Header Styles */
 .ada_error th {
-  padding: 5px;
-  min-width: 85px;
+  background-color: #1e293b;    /* Deep, modern slate background */
+  color: #ffffff;               /* Crisp white text for high contrast */
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  border: 1px solid #e2e8f0;
+
 }
-.ada_error th {
-  background-color: #000;
-  color: #fff;
+
+/* Body Text and Separators */
+.ada_error td {
+  color: #334155;               
+  border: 1px solid #e2e8f0;
+}
+
+/* Zebra Striping (Alternating Row Colors) */
+.ada_error tbody tr:nth-child(even) {
+  background-color: #f8fafc;    
+}
+
+/* Clean up borders on the last row */
+.ada_error tr:last-child td {
+  border-bottom: none;
+}
+.ada_error .contenttype {
+  max-width: 125px;
 }
 .adaEffectedCode {
   display: none;
@@ -514,19 +547,77 @@ td .adaHelpLink:focus {
   color: #0073aa;
   text-decoration: underline;
 }
+/* Modern Layout Container */
 .wp_ada_form {
-  background-color: #fff;
-  border: 1px dashed #0073aa;
-  padding: 10px;
-  padding-bottom: 0px;
+  background-color: #ffffff;
+  color: #1e293b;               /* Softer, modern charcoal instead of pure black */
+  border: 1px solid #e2e8f0;    /* Solid clean border */
+  border-top: 4px solid #0073aa; /* Prominent WordPress blue accent bar at the top */
+  border-radius: 12px;          /* Matches your table's border radius */
   max-width: 98%;
-  font-size: 110%;
-  margin: 10px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1rem;              /* Clean standard modern base size */
+margin-top: 15px;
+margin-bottom: 15px;
+padding-top: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.03); /* Matching table shadow */
 }
-.wp_ada_form #sort,
-.wp_ada_form #view {
-  max-width: 90px;
+
+/* Form Headings */
+.wp_ada_form h2, 
+.wp_ada_form h3 {
+  margin-top: 0;
+  color: #0f172a;
+  font-weight: 600;
 }
+
+/* Modern Input Field Styling */
+.wp_ada_form input[type="text"],
+.wp_ada_form input[type="email"],
+.wp_ada_form textarea,
+.wp_ada_form select {
+
+  margin-top: 6px;
+  margin-bottom: 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background-color: #f8fafc;
+  font-size: 0.95rem;
+  color: #334155;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+/* Accessible Interactive Focus States */
+.wp_ada_form input:focus,
+.wp_ada_form textarea:focus,
+.wp_ada_form select:focus {
+  outline: none;
+  border-color: #0073aa;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 115, 170, 0.15); /* Soft focus ring */
+}
+
+/* Cohesive Accent Button */
+.wp_ada_form button,
+.wp_ada_form input[type="submit"] {
+  background-color: #0073aa;
+  color: #ffffff;
+  padding: 5px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.wp_ada_form button:hover,
+.wp_ada_form input[type="submit"]:hover {
+  background-color: #005984;    /* Deeper blue accent layer on hover */
+}
+
+
 .adashowingmessage {
   display: block;
 }
@@ -648,7 +739,10 @@ td .adaHelpLink:focus {
   margin-left: 20px;
 }
 .wp_ada_label_disabled {
-  color: #ccc;
+  color: #ccc !important;
+}
+.wp_ada_code_column {
+  width: 105px;
 }
 .wp_ada_issue_sum {
   float: left;
@@ -657,15 +751,111 @@ td .adaHelpLink:focus {
   width: 25%;
   max-width: 215px;
 }
+.wp_ada_error_key {
+
+  
+  /* Borders & Radii */
+  border: 1px solid #e2e8f0;    /* Soft outer structural border */
+  border-bottom: 5px solid #0073aa; /* Solid WordPress blue brand left vertical accent bar */
+  border-radius: 12px;   
+}
 .wp_ada_summary {
-  display: inline-block;
+  /* Layout & Distribution */
+  display: flex;
+
+  justify-content: flex-start;  /* Keeps summary elements side-by-side */
+  gap: 16px;                    /* Clean modern separation between inner items */
   white-space: nowrap;
-  vertical-align: middle;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px dashed #0073aa;
-  margin: 15px;
-  width: 97%;
+  max-width:98%;
+  
+  /* Borders & Radii */
+  border: 1px solid #e2e8f0;    /* Soft outer structural border */
+  border-left: 5px solid #0073aa; /* Solid WordPress blue brand left vertical accent bar */
+  border-radius: 12px;          /* Matches table and form design system */
+  
+  /* Sizing & Spacing */
+  margin-bottom: 15px;
+  padding: 12px 20px;           /* Replaces strict 5px layout with safe room to breathe */
+  box-sizing: border-box;
+  
+  /* Styling & Polish */
+  background-color: #ffffff;
+  color: #1e293b;               /* High-contrast accessible text color */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.03); /* Matching subtle shadow */
+}
+.wpada_btn{
+  padding: 3px;
+  color: #475569;               /* Slate charcoal text color */
+  background-color: #ffffff;    /* Clean base look */
+  border: 1px solid #cbd5e1;    /* Softer neutral framing border */
+  border-radius: 6px;           /* Complements your table design radii */
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+    align-items: center;
+      width: 92px;
+}
+
+
+.wp_ada_action_vertical_group a{
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;     /* Balanced separation between font awesome icon and text */
+  margin-bottom: 3px;                
+  padding: 3px 14px;
+  color: #475569;               /* Slate charcoal text color */
+  background-color: #ffffff;    /* Clean base look */
+  border: 1px solid #cbd5e1;    /* Softer neutral framing border */
+  border-radius: 6px;           /* Complements your table design radii */
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.wp_ada_action_vertical_group .wp-ada-ignore-options a{
+  width: 92px;
+    background-color:#EEF4FB;
+    color:#000;
+    font-size: 0.75rem;
+}
+/* Icons styling alignment */
+.wp_ada_action_vertical_group i {
+  color: #4a6284;               /* Subtle icon tone to avoid text distractions */
+  font-size: 0.9rem;
+  transition: color 0.15s ease-in-out;
+}
+.wp_ada_action_vertical_group .wp-ada-ignore-options.wp_ada_action_vertical_group i {
+ color:#000;
+}
+
+/* Modern Interactivity Hover State */
+.wp_ada_action_vertical_group a:hover {
+  background-color:#fff;
+  color: #0073aa;               /* Shifts text to standard WordPress Accent Blue */
+  border-color: #94a3b8;
+}
+
+.wp_ada_action_vertical_group a:hover i {
+  color: #0073aa;               /* Icon color illuminates on hover */
+}
+
+/* Accessible Multi-layer Focus Ring */
+.wp_ada_action_vertical_group a:focus-visible,
+.wp_ada_action_vertical_group a:focus {
+  outline: none;
+  border-color: #0073aa;
+  background-color:#fff;
+  box-shadow: 0 0 0 2px #ffffff, 
+              0 0 0 4px #0073aa;
+}
+/* Unified Vertical Column Layout */
+.wp_ada_action_vertical_group {
+  display: flex;
+  flex-direction: column;       /* Directs items to stack strictly into a column */
+  width: 100px;             /* Sets a clean, standard sidebar dashboard width */
+  margin: 5px 0;            /* Ensures inner row borders do not clip the corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 .wp_ada_summary_left {
   float: left;
